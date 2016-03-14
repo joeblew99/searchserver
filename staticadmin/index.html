@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script>
+        function getObjRefValue(id)
+       {
+            result=null;
+            
+            result = $("#" + id).val();
+               
+            return result;
+       }
+        function submit(op, url, paramArray)
+        {
+            //console.log(paramArray.length);
+            
+            for (var i=0; i < paramArray.length; i++)
+            {
+                pair = paramArray[i];
+                pairArray = pair.split(',');
+                
+                queryName = pairArray[0];
+                objRefName = pairArray[1];
+                objRefValue = getObjRefValue(objRefName);
+                
+                queryValue = objRefValue;
+                url = url.replace(queryName, queryValue);
+            }
+            
+            console.log(url);            
+            
+            AddResultLine("req: " + url);
+            
+            $.ajax({
+                type: op.toUpperCase(),
+                url: url,
+                data: null,
+                statusCode: {
+                    
+                    200: function (response) {
+                        AddResultLine("res code: 200 ");
+                    },
+                    201: function (response) {
+                        AddResultLine("res code: 201 ");
+                        
+                    },
+                    400: function (response) {
+                       AddResultLine("res code: 400 ");
+                     },
+                    404: function (response) {
+                        AddResultLine("res code: 400 ");
+                        }},
+                success: submitResult,
+                dataType: 'json'
+            });
+
+        }
+        
+        function submitResult(data)
+         {
+                console.log(data.Result)
+                AddResultLine("res: " + JSON.stringify(data));
+                
+         }
+         
+        
+        function AddResultLine(s)
+        {
+            $("#results").append(s + '\n');
+        }
+    </script>
+
+</head>
+
+<body>
+    <h1>ETL SEREVER - Test Harness</h1>
+
+    <pre id="results" style="top: 0; right:0; width: 50%; height:500px ; position: fixed; display: block; overflow: auto  ;border: 2px solid red"></pre>
+
+    <h2>Product ETL</h2>
+
+    <h3>Admin - Mock</h3> AsyncMakeProductsFromFSMock
+    <br> POST:/productetl/AsyncMakeProductsFromFSMock
+    <input type="button" value="ok" onclick="submit('POST','/productetl/AsyncMakeProductsFromFSMock', []);" />
+    <br>
+
+    <br> AsyncMakeProductsFromURLMock
+    <br> POST:/productetl/AsyncMakeProductsFromURLMock
+    <input type="button" value="ok" onclick="submit('POST','/productetl/AsyncMakeProductsFromURLMock', []);" />
+
+    <h3>Public - Mock</h3> StaticProductsURL: Outfit
+    <br>
+    <a href="/staticproduct-mock/outfit.json">/staticproduct-mock/outfit.json</a>
+    <br>
+    <a href="/staticproduct-mock/outfit-men.json">/staticproduct-mock/outfit-men.json</a>
+    <br>
+    <a href="/staticproduct-mock/outfit-women.json">/staticproduct-mock/outfit-women.json</a>
+    <br>
+
+    <br> StaticProductsURL: Product
+    <br>
+    <a href="/staticproduct-mock/product.json">/staticproduct-mock/product.json</a>
+    <br>
+    <a href="/staticproduct-mock/product-x.json">/staticproduct-mock/product-x.json</a>(X is the ProductID)
+    <br>
+
+    <br> StaticProductsURL: Size
+    <br>
+    <a href="/staticproduct-mock/product-sizes.json">/staticproduct-mock/product-sizes.json</a>
+    <br>
+
+    <h3>Admin</h3> AsyncMakeProductsFromURLReal
+    <br> POST:/ProductETL/AsyncMakeProductsFromURLReal
+    <input type="button" value="ok" onclick="submit('POST','/productetl/AsyncMakeProductsFromURLReal', []);" />
+    <br>
+    <br>
+    
+    <h3>Public</h3> StaticProductsURL: Outfit
+    <br>
+    <a href="/staticproduct/outfit.json">/staticproduct/outfit.json</a>
+    <br>
+    <a href="/staticproduct/outfit-men.json">/staticproduct/outfit-men.json</a>
+    <br>
+    <a href="/staticproduct/outfit-women.json">/staticproduct/outfit-women.json</a>
+    <br>
+
+    <br> StaticProductsURL: Product
+    <br>
+    <a href="/staticproduct/product.json">/staticproduct/product.json</a>
+    <br>
+    <a href="/staticproduct/product-x.json">/staticproduct/product-x.json</a>(X is the ProductID)
+    <br>
+
+    <br> StaticProductsURL: Size
+    <br>
+    <a href="/staticproduct/product-sizes.json">/staticproduct/product-sizes.json</a>
+    <br>
+
+    <h2>Order DB</h2>
+
+    <h3>Admin</h3> GenerateOrder - Test Data
+    <br> POST:/order/admingen
+    <input type="button" value="ok" onclick="submit('POST','/order/admingen', []);" />
+    <br>
+
+    <br>GetOrderAll - Test Data
+    <br> GET:/order/admingetall
+    <input type="button" value="ok" onclick="submit('GET','/order/admingetall', []);" />
+    <br>
+
+    <br>DeleteOrderAll - Test Data
+    <br> POST:/order/admindeleteall
+    <input type="button" value="ok" onclick="submit('POST','/order/admindeleteall', []);" />
+    <br>
+
+
+
+    <h3>Public</h3> CreateOrderItem - (Fitting Room can create an order)
+    <br> POST:/order/createbyvariant/:id
+    <br> VariantID:
+    <input id="createbyvariant_id1" type="text" value="">
+    <input type="button" value="ok" onclick="submit('POST', '/order/createbyvariant/:id1/', [':id1,createbyvariant_id1']);" />
+    <br>
+
+    <br>GetOrderAllByCreatedAsc (Fitting Room Actor)
+    <br> GET:/order/getallbycreatedasc
+    <input type="button" value="ok" onclick="submit('GET', '/order/getallbycreatedasc/', []);" />
+    <br>
+
+    <br>GetOrderAllByCreatedDesc (Warehouse Actor)
+    <br>GET:/order/getallbycreateddesc
+    <input type="button" value="ok" onclick="submit('GET', '/order/getallbycreateddesc/', []);" />
+
+    <br>
+    <br>UpdateOrderAsDone - Warehouse can mark as DONE (because they sent the item).
+    <br> PUT:/order/updateorderbypkiddonetrue/:id
+    <br> PK ID:
+    <input id="updateorderbypkiddonetrue_id1" type="text" value="">
+    <input type="button" value="ok" onclick="submit('PUT', '/order/updateorderbypkiddonetrue/:id1', [':id1,updateorderbypkiddonetrue_id1']);"
+    />
+    <br>
+
+    <br>
+    <br>UpdateOrderAsCancelled - Warehouse mark as CANCELLED (because of no stock)
+    <br> PUT:/order/updateorderbypkidcanceltrue/:id
+    <br> PK ID:
+    <input id="updateorderbypkidcanceltrue_id1" type="text" value="">
+    <input type="button" value="ok" onclick="submit('PUT', '/order/updateorderbypkidcanceltrue/:id1', [':id1,updateorderbypkidcanceltrue_id1']);"
+    />
+    <br>
+
+    <br>
+    <br>DeleteSession - Warehouse mark as Session ended (because customer has gone)
+    <br> PUT:/order/deletesession/
+    <input type="button" value="ok" onclick="submit('PUT', '/order/deletesession', []);" />
+    <br>
+
+
+    <br>CreateHelp - (Fitting room)
+    <br> POST:/order/createHelpItem
+    <input type="button" value="ok" onclick="submit('POST','/order/createHelpItem', []);" />
+    <br>
+
+    <br>GetHelpAll - (warehouse) polling
+    <br> GET:/order/getHelpAll
+    <input type="button" value="ok" onclick="submit('GET','/order/getHelpAll', []);" />
+    <br>
+
+
+    <br>deleteHelpAll - (warehouse)
+    <br> PUT:/order/deleteHelpAll
+    <input type="button" value="ok" onclick="submit('GET','/order/deleteHelpAll', []);" />
+    <br>
+
+
+
+
+
+
+    <h2>BA Events</h2>
+
+    <h3>Admin</h3> Process BAEvents From URL - Mock Test Data
+    <br> GET:/baevent/ProcessFromURLMock/
+    <input type="button" value="ok" onclick="submit('GET','/baevent/ProcessFromURLMock/', []);" />
+    <br>
+
+    <br>ProcessBAEventsFromURL - Real Data
+    <br> GET:/baevent/ProcessFromURL
+    <input type="button" value="ok" onclick="submit('GET','/baevent/ProcessFromURL/', []);" />
+    <br>
+
+
+    <br>GetAllByCreatedAsc - Test Data
+    <br> GET:/baevent/GetAllByCreatedAsc
+    <input type="button" value="ok" onclick="submit('GET','/baevent/GetAllByCreatedAsc/', []);" />
+    <br>
+
+    <br>DeleteAll - Test Data
+    <br> POST:/baevent/DeleteAll
+    <input type="button" value="ok" onclick="submit('POST','/baevent/DeleteAll/', []);" />
+    <br>
+
+
+
+    <h3>Public</h3> Create BA Event Item - (Fitting Room / Warehouse)
+    <br> POST:/baevent/Create/:type:/:namevalues(DELIM = "|")
+    <br> Type:
+    <input id="baevent_create_type" type="text" value=""> Value:
+    <input id="baevent_create_namevalues" type="text" value="">
+    <input type="button" value="ok" onclick="submit('POST', '/baevent/Create/:type/:namevalues', [':type,baevent_create_type', ':namevalues,baevent_create_namevalues']);"
+    />
+    <br>
+
+
+    <hr>
+    <b>TODO: </b>
+    <br> - Make real Get and POST with JS
+    <br> - Make load in side IFRAME
+    <br>
+
+
+
+</body>
+
+</html>
