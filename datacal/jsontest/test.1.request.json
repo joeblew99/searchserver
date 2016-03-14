@@ -1,0 +1,66 @@
+{
+    "size": 10,
+    "from": 0,
+    "explain": true,
+    "highlight": {
+        "fields": [
+            "description"
+        ]
+    },
+    "query": {
+        "conjuncts": [
+            {
+                "boost": 1,
+                "query": "test"
+            }
+        ]
+    },
+    "facets": {
+        "Categories": {
+            "field": "category",
+            "size": 5
+        },
+        "Day": {
+            "field": "start",
+            "size": 2,
+            "date_ranges": [
+                {
+                    "name": "Saturday",
+                    "end": "2015-02-01T00:00:00Z"
+                },
+                {
+                    "name": "Sunday",
+                    "start": "2015-02-01T00:00:00Z"
+                }
+            ]
+        },
+        "Duration": {
+            "field": "duration",
+            "size": 3,
+            "numeric_ranges": [
+                {
+                    "name": "<=30 min",
+                    "max": 31
+                },
+                {
+                    "name": "30-60 min",
+                    "min": 31,
+                    "max": 61
+                },
+                {
+                    "name": "60+ min",
+                    "min": 61
+                }
+            ]
+        }
+    },
+    "fields": [
+        "summary",
+        "description",
+        "speaker",
+        "location",
+        "duration",
+        "start",
+        "url"
+    ]
+}

@@ -1,0 +1,1243 @@
+{
+    "status": {
+        "total": 1,
+        "failed": 0,
+        "successful": 1
+    },
+    "request": {
+        "query": {
+            "conjuncts": [
+                {
+                    "query": "test",
+                    "boost": 1
+                }
+            ],
+            "boost": 1
+        },
+        "size": 10,
+        "from": 0,
+        "highlight": {
+            "style": null,
+            "fields": [
+                "description"
+            ]
+        },
+        "fields": [
+            "summary",
+            "description",
+            "speaker",
+            "location",
+            "duration",
+            "start",
+            "url"
+        ],
+        "facets": {
+            "Categories": {
+                "size": 5,
+                "field": "category"
+            },
+            "Day": {
+                "size": 2,
+                "field": "start",
+                "date_ranges": [
+                    {
+                        "name": "Saturday",
+                        "start": "0001-01-01T00:00:00Z",
+                        "end": "2015-02-01T00:00:00Z"
+                    },
+                    {
+                        "name": "Sunday",
+                        "start": "2015-02-01T00:00:00Z",
+                        "end": "0001-01-01T00:00:00Z"
+                    }
+                ]
+            },
+            "Duration": {
+                "size": 3,
+                "field": "duration",
+                "numeric_ranges": [
+                    {
+                        "name": "\u003c=30 min",
+                        "max": 31
+                    },
+                    {
+                        "name": "30-60 min",
+                        "min": 31,
+                        "max": 61
+                    },
+                    {
+                        "name": "60+ min",
+                        "min": 61
+                    }
+                ]
+            }
+        },
+        "explain": true
+    },
+    "hits": [
+        {
+            "index": "store-fosdem-ical",
+            "id": "2537@FOSDEM15@fosdem.org",
+            "score": 0.944250061201413,
+            "explanation": {
+                "value": 0.944250061201413,
+                "message": "sum of:",
+                "children": [
+                    {
+                        "value": 0.944250061201413,
+                        "message": "sum of:",
+                        "children": [
+                            {
+                                "value": 0.944250061201413,
+                                "message": "product of:",
+                                "children": [
+                                    {
+                                        "value": 0.944250061201413,
+                                        "message": "sum of:",
+                                        "children": [
+                                            {
+                                                "value": 0.944250061201413,
+                                                "message": "product of:",
+                                                "children": [
+                                                    {
+                                                        "value": 0.944250061201413,
+                                                        "message": "sum of:",
+                                                        "children": [
+                                                            {
+                                                                "value": 0.944250061201413,
+                                                                "message": "fieldWeight(_all:test in 2537@FOSDEM15@fosdem.org), product of:",
+                                                                "children": [
+                                                                    {
+                                                                        "value": 2.449489742783178,
+                                                                        "message": "tf(termFreq(_all:test)=6"
+                                                                    },
+                                                                    {
+                                                                        "value": 0.09950371831655502,
+                                                                        "message": "fieldNorm(field=_all, doc=2537@FOSDEM15@fosdem.org)"
+                                                                    },
+                                                                    {
+                                                                        "value": 3.8741112370243846,
+                                                                        "message": "idf(docFreq=30, maxDocs=549)"
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "value": 1,
+                                                        "message": "coord(1/1)"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "value": 1,
+                                        "message": "coord(1/1)"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            "locations": {
+                "description": {
+                    "test": [
+                        {
+                            "pos": 9,
+                            "start": 43,
+                            "end": 47,
+                            "array_positions": null
+                        },
+                        {
+                            "pos": 21,
+                            "start": 105,
+                            "end": 110,
+                            "array_positions": null
+                        },
+                        {
+                            "pos": 54,
+                            "start": 293,
+                            "end": 298,
+                            "array_positions": null
+                        },
+                        {
+                            "pos": 61,
+                            "start": 338,
+                            "end": 345,
+                            "array_positions": null
+                        },
+                        {
+                            "pos": 76,
+                            "start": 440,
+                            "end": 447,
+                            "array_positions": null
+                        }
+                    ]
+                },
+                "summary": {
+                    "test": [
+                        {
+                            "pos": 3,
+                            "start": 10,
+                            "end": 15,
+                            "array_positions": null
+                        }
+                    ]
+                }
+            },
+            "fragments": {
+                "description": [
+                    "…re checking in, your \u003cmark\u003etest\u003c/mark\u003e suite should always be green. Or should it? What if your \u003cmark\u003etests\u003c/mark\u003e are all green but you forgot to check one important edge case? What if your underlying system environment lets …"
+                ]
+            },
+            "fields": {
+                "description": "It's easy as pie: before checking in, your test suite should always be green. Or should it? What if your tests are all green but you forgot to check one important edge case? What if your underlying system environment lets you down, but only under rare conditions that you didn't cover in your tests?\u003c/p\u003e\u003cp\u003eThis talk introduces randomised testing as used by projects like Apache Lucene and Elasticsearch based on the Carrotsearch Randomised Testing framework. It has helped uncover (and ultimately fix) a huge number of bugs not only in these project’s source code, but also in the JVM itself which those projects rely on.",
+                "duration": 45,
+                "location": "H.1309 (Van Rijn)",
+                "speaker": "Isabel Drost-Fromm",
+                "start": "2015-02-01T14:30:00Z",
+                "summary": "Make your tests fail",
+                "url": "https:/fosdem.org/2015/schedule/event/make_your_tests_fail/"
+            }
+        },
+        {
+            "index": "store-fosdem-ical",
+            "id": "2949@FOSDEM15@fosdem.org",
+            "score": 0.7974731541502464,
+            "explanation": {
+                "value": 0.7974731541502464,
+                "message": "sum of:",
+                "children": [
+                    {
+                        "value": 0.7974731541502464,
+                        "message": "sum of:",
+                        "children": [
+                            {
+                                "value": 0.7974731541502464,
+                                "message": "product of:",
+                                "children": [
+                                    {
+                                        "value": 0.7974731541502464,
+                                        "message": "sum of:",
+                                        "children": [
+                                            {
+                                                "value": 0.7974731541502464,
+                                                "message": "product of:",
+                                                "children": [
+                                                    {
+                                                        "value": 0.7974731541502464,
+                                                        "message": "sum of:",
+                                                        "children": [
+                                                            {
+                                                                "value": 0.7974731541502464,
+                                                                "message": "fieldWeight(_all:test in 2949@FOSDEM15@fosdem.org), product of:",
+                                                                "children": [
+                                                                    {
+                                                                        "value": 2.23606797749979,
+                                                                        "message": "tf(termFreq(_all:test)=5"
+                                                                    },
+                                                                    {
+                                                                        "value": 0.09205745905637741,
+                                                                        "message": "fieldNorm(field=_all, doc=2949@FOSDEM15@fosdem.org)"
+                                                                    },
+                                                                    {
+                                                                        "value": 3.8741112370243846,
+                                                                        "message": "idf(docFreq=30, maxDocs=549)"
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "value": 1,
+                                                        "message": "coord(1/1)"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "value": 1,
+                                        "message": "coord(1/1)"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            "locations": {
+                "description": {
+                    "test": [
+                        {
+                            "pos": 37,
+                            "start": 200,
+                            "end": 204,
+                            "array_positions": null
+                        },
+                        {
+                            "pos": 53,
+                            "start": 300,
+                            "end": 307,
+                            "array_positions": null
+                        },
+                        {
+                            "pos": 76,
+                            "start": 439,
+                            "end": 444,
+                            "array_positions": null
+                        },
+                        {
+                            "pos": 94,
+                            "start": 553,
+                            "end": 557,
+                            "array_positions": null
+                        }
+                    ]
+                },
+                "summary": {
+                    "test": [
+                        {
+                            "pos": 2,
+                            "start": 12,
+                            "end": 19,
+                            "array_positions": null
+                        }
+                    ]
+                }
+            },
+            "fragments": {
+                "description": [
+                    "…lly. In this talk we will discuss how to load \u003cmark\u003etest\u003c/mark\u003e an XMPP server and distribute load generation using Erlang/OTP as a platform. Experiences from \u003cmark\u003etesting\u003c/mark\u003e production ready MongooseIM systems will be pr…"
+                ]
+            },
+            "fields": {
+                "description": "Distribution to multiple virtual machines in the cloud or servers is the way to scale horizontally when there is no more room or resources to grow vertically. In this talk we will discuss how to load test an XMPP server and distribute load generation using Erlang/OTP as a platform. Experiences from testing production ready MongooseIM systems will be presented.\u003c/p\u003e\u003cp\u003eTalk objectives: show from the ground up how to plan and execute load tests of a distributed service and distribute load generation.\u003c/p\u003e\u003cp\u003eTalk audience: DevOps people wanting to load test their XMPP or other message oriented services. People evaluating XMPP solutions in terms of capacity and scalability.",
+                "duration": 45,
+                "location": "H.1309 (Van Rijn)",
+                "speaker": "Michal Slaski",
+                "start": "2015-02-01T09:55:00Z",
+                "summary": "MongooseIM: Testing Massively Concurrent System",
+                "url": "https:/fosdem.org/2015/schedule/event/mongooseim_testing_massively_concurrent_system/"
+            }
+        },
+        {
+            "index": "store-fosdem-ical",
+            "id": "2973@FOSDEM15@fosdem.org",
+            "score": 0.7354287331261846,
+            "explanation": {
+                "value": 0.7354287331261846,
+                "message": "sum of:",
+                "children": [
+                    {
+                        "value": 0.7354287331261846,
+                        "message": "sum of:",
+                        "children": [
+                            {
+                                "value": 0.7354287331261846,
+                                "message": "product of:",
+                                "children": [
+                                    {
+                                        "value": 0.7354287331261846,
+                                        "message": "sum of:",
+                                        "children": [
+                                            {
+                                                "value": 0.7354287331261846,
+                                                "message": "product of:",
+                                                "children": [
+                                                    {
+                                                        "value": 0.7354287331261846,
+                                                        "message": "sum of:",
+                                                        "children": [
+                                                            {
+                                                                "value": 0.7354287331261846,
+                                                                "message": "fieldWeight(_all:test in 2973@FOSDEM15@fosdem.org), product of:",
+                                                                "children": [
+                                                                    {
+                                                                        "value": 2,
+                                                                        "message": "tf(termFreq(_all:test)=4"
+                                                                    },
+                                                                    {
+                                                                        "value": 0.09491579979658127,
+                                                                        "message": "fieldNorm(field=_all, doc=2973@FOSDEM15@fosdem.org)"
+                                                                    },
+                                                                    {
+                                                                        "value": 3.8741112370243846,
+                                                                        "message": "idf(docFreq=30, maxDocs=549)"
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "value": 1,
+                                                        "message": "coord(1/1)"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "value": 1,
+                                        "message": "coord(1/1)"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            "locations": {
+                "description": {
+                    "test": [
+                        {
+                            "pos": 63,
+                            "start": 397,
+                            "end": 401,
+                            "array_positions": null
+                        },
+                        {
+                            "pos": 74,
+                            "start": 459,
+                            "end": 463,
+                            "array_positions": null
+                        },
+                        {
+                            "pos": 112,
+                            "start": 684,
+                            "end": 691,
+                            "array_positions": null
+                        },
+                        {
+                            "pos": 117,
+                            "start": 714,
+                            "end": 721,
+                            "array_positions": null
+                        }
+                    ]
+                }
+            },
+            "fragments": {
+                "description": [
+                    "…arn how to mitigate the lack of data refreshes by creating modular \u003cmark\u003etest\u003c/mark\u003e cases and use parameters to dissociate the data from the \u003cmark\u003etest\u003c/mark\u003e cases and automation and therefore be able to work with data that …"
+                ]
+            },
+            "fields": {
+                "description": "It’s not a bug, it’s an environment problem.Environments are costly and data refreshes tedious. As a result, QA analysts have to make compromises and work in environments that have a different makeup than the production environment, which can create false positives and missed bugs. This presentation will help QA engineers learn how to mitigate the lack of data refreshes by creating modular test cases and use parameters to dissociate the data from the test cases and automation and therefore be able to work with data that you do have in each environment. Additionally, it will dive into how to maximize the environments QA professionals currently have and align them to their testing process to do feature testing and regression efficiently.",
+                "duration": 45,
+                "location": "H.1309 (Van Rijn)",
+                "speaker": "Helene Astier",
+                "start": "2015-02-01T11:45:00Z",
+                "summary": "It’s not a bug, it’s an environment problem. ",
+                "url": "https:/fosdem.org/2015/schedule/event/its_not_a_bug_its_an_environment_problem/"
+            }
+        },
+        {
+            "index": "store-fosdem-ical",
+            "id": "3144@FOSDEM15@fosdem.org",
+            "score": 0.7014911379173383,
+            "explanation": {
+                "value": 0.7014911379173383,
+                "message": "sum of:",
+                "children": [
+                    {
+                        "value": 0.7014911379173383,
+                        "message": "sum of:",
+                        "children": [
+                            {
+                                "value": 0.7014911379173383,
+                                "message": "product of:",
+                                "children": [
+                                    {
+                                        "value": 0.7014911379173383,
+                                        "message": "sum of:",
+                                        "children": [
+                                            {
+                                                "value": 0.7014911379173383,
+                                                "message": "product of:",
+                                                "children": [
+                                                    {
+                                                        "value": 0.7014911379173383,
+                                                        "message": "sum of:",
+                                                        "children": [
+                                                            {
+                                                                "value": 0.7014911379173383,
+                                                                "message": "fieldWeight(_all:test in 3144@FOSDEM15@fosdem.org), product of:",
+                                                                "children": [
+                                                                    {
+                                                                        "value": 1.4142135623730951,
+                                                                        "message": "tf(termFreq(_all:test)=2"
+                                                                    },
+                                                                    {
+                                                                        "value": 0.12803688645362854,
+                                                                        "message": "fieldNorm(field=_all, doc=3144@FOSDEM15@fosdem.org)"
+                                                                    },
+                                                                    {
+                                                                        "value": 3.8741112370243846,
+                                                                        "message": "idf(docFreq=30, maxDocs=549)"
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "value": 1,
+                                                        "message": "coord(1/1)"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "value": 1,
+                                        "message": "coord(1/1)"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            "locations": {
+                "description": {
+                    "test": [
+                        {
+                            "pos": 4,
+                            "start": 24,
+                            "end": 31,
+                            "array_positions": null
+                        }
+                    ]
+                },
+                "summary": {
+                    "test": [
+                        {
+                            "pos": 3,
+                            "start": 15,
+                            "end": 22,
+                            "array_positions": null
+                        }
+                    ]
+                }
+            },
+            "fragments": {
+                "description": [
+                    "Discover property-based \u003cmark\u003etesting\u003c/mark\u003e, and see how it works on a real project, the pflua compiler."
+                ]
+            },
+            "fields": {
+                "description": "Discover property-based testing, and see how it works on a real project, the pflua compiler.",
+                "duration": 45,
+                "location": "H.1309 (Van Rijn)",
+                "speaker": "Katerina Barone-Adesi",
+                "start": "2015-02-01T13:35:00Z",
+                "summary": "Property-based testing an open-source compiler, pflua",
+                "url": "https:/fosdem.org/2015/schedule/event/property_based_testing/"
+            }
+        },
+        {
+            "index": "store-fosdem-ical",
+            "id": "3361@FOSDEM15@fosdem.org",
+            "score": 0.6986336940679743,
+            "explanation": {
+                "value": 0.6986336940679743,
+                "message": "sum of:",
+                "children": [
+                    {
+                        "value": 0.6986336940679743,
+                        "message": "sum of:",
+                        "children": [
+                            {
+                                "value": 0.6986336940679743,
+                                "message": "product of:",
+                                "children": [
+                                    {
+                                        "value": 0.6986336940679743,
+                                        "message": "sum of:",
+                                        "children": [
+                                            {
+                                                "value": 0.6986336940679743,
+                                                "message": "product of:",
+                                                "children": [
+                                                    {
+                                                        "value": 0.6986336940679743,
+                                                        "message": "sum of:",
+                                                        "children": [
+                                                            {
+                                                                "value": 0.6986336940679743,
+                                                                "message": "fieldWeight(_all:test in 3361@FOSDEM15@fosdem.org), product of:",
+                                                                "children": [
+                                                                    {
+                                                                        "value": 2,
+                                                                        "message": "tf(termFreq(_all:test)=4"
+                                                                    },
+                                                                    {
+                                                                        "value": 0.09016696363687515,
+                                                                        "message": "fieldNorm(field=_all, doc=3361@FOSDEM15@fosdem.org)"
+                                                                    },
+                                                                    {
+                                                                        "value": 3.8741112370243846,
+                                                                        "message": "idf(docFreq=30, maxDocs=549)"
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "value": 1,
+                                                        "message": "coord(1/1)"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "value": 1,
+                                        "message": "coord(1/1)"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            "locations": {
+                "description": {
+                    "test": [
+                        {
+                            "pos": 61,
+                            "start": 393,
+                            "end": 397,
+                            "array_positions": null
+                        },
+                        {
+                            "pos": 76,
+                            "start": 487,
+                            "end": 492,
+                            "array_positions": null
+                        },
+                        {
+                            "pos": 86,
+                            "start": 561,
+                            "end": 566,
+                            "array_positions": null
+                        },
+                        {
+                            "pos": 95,
+                            "start": 608,
+                            "end": 613,
+                            "array_positions": null
+                        }
+                    ]
+                }
+            },
+            "fragments": {
+                "description": [
+                    "…e is able to \u003cmark\u003etest\u003c/mark\u003e thousands of packages manually.\u003c/p\u003e\u003cp\u003eWe are putting much effort into running regression \u003cmark\u003etests\u003c/mark\u003e on all extensions using pg_regress, and creating system integration \u003cmark\u003etests\u003c/mark\u003e to be run wit…"
+                ]
+            },
+            "fields": {
+                "description": "The apt.postgresql.org repository hosts PostgreSQL server packages for seven major releases: all the stable branches plus beta and the devel versions. Targetting two architectures and seven Debian and Ubuntu releases, this is almost 100 combinations in the cross product. On top of that, we build binary packages for various PostgreSQL extensions and applications. Of course no one is able to test thousands of packages manually.\u003c/p\u003e\u003cp\u003eWe are putting much effort into running regression tests on all extensions using pg_regress, and creating system integration tests to be run with the autopkgtest tool. All tests are integrated with our Jenkins build server.\u003c/p\u003e\u003cp\u003eThis talk presents recent advances made in the area and includes examples of bugs found.",
+                "duration": 50,
+                "location": "AW1.126",
+                "speaker": "Christoph Berg",
+                "start": "2015-01-31T15:00:00Z",
+                "summary": "Large Scale Quality Assurance in the PostgreSQL Ecosystem",
+                "url": "https:/fosdem.org/2015/schedule/event/large_scale_quality_assurance_in_the_postgresql_ecosystem/"
+            }
+        },
+        {
+            "index": "store-fosdem-ical",
+            "id": "3028@FOSDEM15@fosdem.org",
+            "score": 0.6813132910804449,
+            "explanation": {
+                "value": 0.6813132910804449,
+                "message": "sum of:",
+                "children": [
+                    {
+                        "value": 0.6813132910804449,
+                        "message": "sum of:",
+                        "children": [
+                            {
+                                "value": 0.6813132910804449,
+                                "message": "product of:",
+                                "children": [
+                                    {
+                                        "value": 0.6813132910804449,
+                                        "message": "sum of:",
+                                        "children": [
+                                            {
+                                                "value": 0.6813132910804449,
+                                                "message": "product of:",
+                                                "children": [
+                                                    {
+                                                        "value": 0.6813132910804449,
+                                                        "message": "sum of:",
+                                                        "children": [
+                                                            {
+                                                                "value": 0.6813132910804449,
+                                                                "message": "fieldWeight(_all:test in 3028@FOSDEM15@fosdem.org), product of:",
+                                                                "children": [
+                                                                    {
+                                                                        "value": 1.7320508075688772,
+                                                                        "message": "tf(termFreq(_all:test)=3"
+                                                                    },
+                                                                    {
+                                                                        "value": 0.10153461992740631,
+                                                                        "message": "fieldNorm(field=_all, doc=3028@FOSDEM15@fosdem.org)"
+                                                                    },
+                                                                    {
+                                                                        "value": 3.8741112370243846,
+                                                                        "message": "idf(docFreq=30, maxDocs=549)"
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "value": 1,
+                                                        "message": "coord(1/1)"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "value": 1,
+                                        "message": "coord(1/1)"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            "locations": {
+                "description": {
+                    "test": [
+                        {
+                            "pos": 10,
+                            "start": 47,
+                            "end": 54,
+                            "array_positions": null
+                        },
+                        {
+                            "pos": 16,
+                            "start": 90,
+                            "end": 94,
+                            "array_positions": null
+                        },
+                        {
+                            "pos": 31,
+                            "start": 181,
+                            "end": 186,
+                            "array_positions": null
+                        }
+                    ]
+                }
+            },
+            "fragments": {
+                "description": [
+                    "… created by Linaro for \u003cmark\u003etesting\u003c/mark\u003e software on hardware which accepts \u003cmark\u003etest\u003c/mark\u003e jobs to perform on selected hardware to provide a black box to continuous integration \u003cmark\u003etests\u003c/mark\u003e. Bisecting is a technique for finding…"
+                ]
+            },
+            "fields": {
+                "description": "LAVA is a python service created by Linaro for testing software on hardware which accepts test jobs to perform on selected hardware to provide a black box to continuous integration tests. Bisecting is a technique for finding commit in version control system that broke the software. Git provides the powerful \"git bisect\" subcommand for this purposes. In this talk we give and introduction to LAVA and explain howto combine LAVA and git bisect to automatically find offending commits in the Linux kernel.",
+                "duration": 45,
+                "location": "UB2.252A (Lameere)",
+                "speaker": "Riku Voipio",
+                "start": "2015-01-31T16:00:00Z",
+                "summary": "Using LAVA for bisecting bugs",
+                "url": "https:/fosdem.org/2015/schedule/event/lava_bugs/"
+            }
+        },
+        {
+            "index": "store-fosdem-ical",
+            "id": "3439@FOSDEM15@fosdem.org",
+            "score": 0.6203542628679166,
+            "explanation": {
+                "value": 0.6203542628679166,
+                "message": "sum of:",
+                "children": [
+                    {
+                        "value": 0.6203542628679166,
+                        "message": "sum of:",
+                        "children": [
+                            {
+                                "value": 0.6203542628679166,
+                                "message": "product of:",
+                                "children": [
+                                    {
+                                        "value": 0.6203542628679166,
+                                        "message": "sum of:",
+                                        "children": [
+                                            {
+                                                "value": 0.6203542628679166,
+                                                "message": "product of:",
+                                                "children": [
+                                                    {
+                                                        "value": 0.6203542628679166,
+                                                        "message": "sum of:",
+                                                        "children": [
+                                                            {
+                                                                "value": 0.6203542628679166,
+                                                                "message": "fieldWeight(_all:test in 3439@FOSDEM15@fosdem.org), product of:",
+                                                                "children": [
+                                                                    {
+                                                                        "value": 1.7320508075688772,
+                                                                        "message": "tf(termFreq(_all:test)=3"
+                                                                    },
+                                                                    {
+                                                                        "value": 0.09245003014802933,
+                                                                        "message": "fieldNorm(field=_all, doc=3439@FOSDEM15@fosdem.org)"
+                                                                    },
+                                                                    {
+                                                                        "value": 3.8741112370243846,
+                                                                        "message": "idf(docFreq=30, maxDocs=549)"
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "value": 1,
+                                                        "message": "coord(1/1)"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "value": 1,
+                                        "message": "coord(1/1)"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            "locations": {
+                "description": {
+                    "test": [
+                        {
+                            "pos": 60,
+                            "start": 343,
+                            "end": 350,
+                            "array_positions": null
+                        },
+                        {
+                            "pos": 100,
+                            "start": 556,
+                            "end": 563,
+                            "array_positions": null
+                        }
+                    ]
+                },
+                "summary": {
+                    "test": [
+                        {
+                            "pos": 5,
+                            "start": 20,
+                            "end": 27,
+                            "array_positions": null
+                        }
+                    ]
+                }
+            },
+            "fragments": {
+                "description": [
+                    "…enJDK Projects. It now lists dozens of open source projects and communities that participate in \u003cmark\u003etesting\u003c/mark\u003e early access builds of the JDK, report issues they find, and help get them resolved in time.\u003c/p\u003e…"
+                ]
+            },
+            "fields": {
+                "description": "In the beginning, there were bugs. In order to find them faster, before  a JDK release, the OpenJDK Adoption Group began a quality outreach effort. Initially focused on JDK 8, the effort expanded to cover JDK 7  Updates, JDK 8 Updates and JDK 9 OpenJDK Projects. It now lists dozens of open source projects and communities that participate in testing early access builds of the JDK, report issues they find, and help get them resolved in time.\u003c/p\u003e\u003cp\u003eIn this session, you'll learn what worked, and what didn't, and what you can do to join the OpenJDK crowd testing fun with your own open source project to help us find showstopper bugs before they can bite.",
+                "duration": 25,
+                "location": "K.4.201",
+                "speaker": "Rory O’Donnell",
+                "start": "2015-02-01T14:00:00Z",
+                "summary": "The Wisdom Of Crowd Testing OpenJDK",
+                "url": "https:/fosdem.org/2015/schedule/event/crowd_testing/"
+            }
+        },
+        {
+            "index": "store-fosdem-ical",
+            "id": "3383@FOSDEM15@fosdem.org",
+            "score": 0.6075091081966607,
+            "explanation": {
+                "value": 0.6075091081966607,
+                "message": "sum of:",
+                "children": [
+                    {
+                        "value": 0.6075091081966607,
+                        "message": "sum of:",
+                        "children": [
+                            {
+                                "value": 0.6075091081966607,
+                                "message": "product of:",
+                                "children": [
+                                    {
+                                        "value": 0.6075091081966607,
+                                        "message": "sum of:",
+                                        "children": [
+                                            {
+                                                "value": 0.6075091081966607,
+                                                "message": "product of:",
+                                                "children": [
+                                                    {
+                                                        "value": 0.6075091081966607,
+                                                        "message": "sum of:",
+                                                        "children": [
+                                                            {
+                                                                "value": 0.6075091081966607,
+                                                                "message": "fieldWeight(_all:test in 3383@FOSDEM15@fosdem.org), product of:",
+                                                                "children": [
+                                                                    {
+                                                                        "value": 1.7320508075688772,
+                                                                        "message": "tf(termFreq(_all:test)=3"
+                                                                    },
+                                                                    {
+                                                                        "value": 0.09053574502468109,
+                                                                        "message": "fieldNorm(field=_all, doc=3383@FOSDEM15@fosdem.org)"
+                                                                    },
+                                                                    {
+                                                                        "value": 3.8741112370243846,
+                                                                        "message": "idf(docFreq=30, maxDocs=549)"
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "value": 1,
+                                                        "message": "coord(1/1)"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "value": 1,
+                                        "message": "coord(1/1)"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            "locations": {
+                "description": {
+                    "test": [
+                        {
+                            "pos": 79,
+                            "start": 519,
+                            "end": 523,
+                            "array_positions": null
+                        },
+                        {
+                            "pos": 102,
+                            "start": 663,
+                            "end": 667,
+                            "array_positions": null
+                        }
+                    ]
+                },
+                "summary": {
+                    "test": [
+                        {
+                            "pos": 3,
+                            "start": 7,
+                            "end": 11,
+                            "array_positions": null
+                        }
+                    ]
+                }
+            },
+            "fragments": {
+                "description": [
+                    "…ir own OpenGL conformance \u003cmark\u003etest\u003c/mark\u003e suite but there are several unofficial open source alternatives.\u003c/p\u003e\u003cp\u003eThis talk will explain some of these open source OpenGL conformance \u003cmark\u003etest\u003c/mark\u003e suites and give an introd…"
+                ]
+            },
+            "fields": {
+                "description": "OpenGL is an API for rendering 2D and 3D graphics now managed by the non-profit technology consortium Khronos Group. Implementors are free to provide their own implementation of the API. For example, in GNU/Linux systems NVIDIA provides its own proprietary version while other manufacturers like Intel are using Mesa, the most popular open source OpenGL implementation.\u003c/p\u003e\u003cp\u003eBecause of this implementation freedom, ensuring compliance with the specification is important. Khronos provides their own OpenGL conformance test suite but there are several unofficial open source alternatives.\u003c/p\u003e\u003cp\u003eThis talk will explain some of these open source OpenGL conformance test suites and give an introduction about how to use them, including sharing tips between the speaker and the audience.",
+                "duration": 50,
+                "location": "K.4.601",
+                "speaker": "Samuel Iglesias",
+                "start": "2015-01-31T16:00:00Z",
+                "summary": "How to test OpenGL drivers using Free Software",
+                "url": "https:/fosdem.org/2015/schedule/event/gl_testing/"
+            }
+        },
+        {
+            "index": "store-fosdem-ical",
+            "id": "2966@FOSDEM15@fosdem.org",
+            "score": 0.5424840661433925,
+            "explanation": {
+                "value": 0.5424840661433925,
+                "message": "sum of:",
+                "children": [
+                    {
+                        "value": 0.5424840661433925,
+                        "message": "sum of:",
+                        "children": [
+                            {
+                                "value": 0.5424840661433925,
+                                "message": "product of:",
+                                "children": [
+                                    {
+                                        "value": 0.5424840661433925,
+                                        "message": "sum of:",
+                                        "children": [
+                                            {
+                                                "value": 0.5424840661433925,
+                                                "message": "product of:",
+                                                "children": [
+                                                    {
+                                                        "value": 0.5424840661433925,
+                                                        "message": "sum of:",
+                                                        "children": [
+                                                            {
+                                                                "value": 0.5424840661433925,
+                                                                "message": "fieldWeight(_all:test in 2966@FOSDEM15@fosdem.org), product of:",
+                                                                "children": [
+                                                                    {
+                                                                        "value": 1.4142135623730951,
+                                                                        "message": "tf(termFreq(_all:test)=2"
+                                                                    },
+                                                                    {
+                                                                        "value": 0.0990147516131401,
+                                                                        "message": "fieldNorm(field=_all, doc=2966@FOSDEM15@fosdem.org)"
+                                                                    },
+                                                                    {
+                                                                        "value": 3.8741112370243846,
+                                                                        "message": "idf(docFreq=30, maxDocs=549)"
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "value": 1,
+                                                        "message": "coord(1/1)"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "value": 1,
+                                        "message": "coord(1/1)"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            "locations": {
+                "description": {
+                    "test": [
+                        {
+                            "pos": 12,
+                            "start": 70,
+                            "end": 74,
+                            "array_positions": null
+                        },
+                        {
+                            "pos": 50,
+                            "start": 292,
+                            "end": 297,
+                            "array_positions": null
+                        }
+                    ]
+                }
+            },
+            "fragments": {
+                "description": [
+                    "…d-class, award-winning open source \u003cmark\u003etest\u003c/mark\u003e automation framework for use with native, hybrid and mobile web apps.  It drives iOS and Android apps using the WebDriver protocol and uses APIs similar to Sele…"
+                ]
+            },
+            "fields": {
+                "description": "Appium (http://appium.io) is a world-class, award-winning open source test automation framework for use with native, hybrid and mobile web apps.  It drives iOS and Android apps using the WebDriver protocol and uses APIs similar to Selenium.  In doing so, it allows developers to run the same tests across multiple mobile devices.\u003c/p\u003e\u003cp\u003eThis talk will explain how Appium works, the advantages it offers, and provide implementation examples for Android and iOS.  I am a core contributor to Appium development and work for Sauce Labs.",
+                "duration": 45,
+                "location": "H.1309 (Van Rijn)",
+                "speaker": "Eric Millin",
+                "start": "2015-02-01T12:40:00Z",
+                "summary": "Appium",
+                "url": "https:/fosdem.org/2015/schedule/event/appium_module_automation_made_awesome/"
+            }
+        },
+        {
+            "index": "store-fosdem-ical",
+            "id": "3012@FOSDEM15@fosdem.org",
+            "score": 0.534678145316792,
+            "explanation": {
+                "value": 0.534678145316792,
+                "message": "sum of:",
+                "children": [
+                    {
+                        "value": 0.534678145316792,
+                        "message": "sum of:",
+                        "children": [
+                            {
+                                "value": 0.534678145316792,
+                                "message": "product of:",
+                                "children": [
+                                    {
+                                        "value": 0.534678145316792,
+                                        "message": "sum of:",
+                                        "children": [
+                                            {
+                                                "value": 0.534678145316792,
+                                                "message": "product of:",
+                                                "children": [
+                                                    {
+                                                        "value": 0.534678145316792,
+                                                        "message": "sum of:",
+                                                        "children": [
+                                                            {
+                                                                "value": 0.534678145316792,
+                                                                "message": "fieldWeight(_all:test in 3012@FOSDEM15@fosdem.org), product of:",
+                                                                "children": [
+                                                                    {
+                                                                        "value": 1.4142135623730951,
+                                                                        "message": "tf(termFreq(_all:test)=2"
+                                                                    },
+                                                                    {
+                                                                        "value": 0.09759000688791275,
+                                                                        "message": "fieldNorm(field=_all, doc=3012@FOSDEM15@fosdem.org)"
+                                                                    },
+                                                                    {
+                                                                        "value": 3.8741112370243846,
+                                                                        "message": "idf(docFreq=30, maxDocs=549)"
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "value": 1,
+                                                        "message": "coord(1/1)"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "value": 1,
+                                        "message": "coord(1/1)"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            "locations": {
+                "description": {
+                    "test": [
+                        {
+                            "pos": 84,
+                            "start": 501,
+                            "end": 506,
+                            "array_positions": null
+                        },
+                        {
+                            "pos": 97,
+                            "start": 574,
+                            "end": 579,
+                            "array_positions": null
+                        }
+                    ]
+                }
+            },
+            "fragments": {
+                "description": [
+                    "…s and lets you run them through your software.\u003c/p\u003e\u003cp\u003eThis talk will include an enticing argument for writing \u003cmark\u003etests\u003c/mark\u003e and will present the audience with the data of running the current \u003cmark\u003etests\u003c/mark\u003e on the curre…"
+                ]
+            },
+            "fields": {
+                "description": "Good software can take a hit. Most software can't. The OpenDocument Format (ODF) specification is quite large and very important. Now that it is being adopted more and more, many strange and wonderful documents will be created by custom software that claim to be ODF documents. The ODF softwares of the world should be prepared. That's why ODFAutoTests helps you to create outlandish documents and lets you run them through your software.\u003c/p\u003e\u003cp\u003eThis talk will include an enticing argument for writing tests and will present the audience with the data of running the current tests on the current software.",
+                "duration": 20,
+                "location": "K.3.201",
+                "speaker": "Jos van den Oever",
+                "start": "2015-01-31T14:20:00Z",
+                "summary": "Torturing your software with 124 ODF file formats",
+                "url": "https:/fosdem.org/2015/schedule/event/documents_torturing/"
+            }
+        }
+    ],
+    "total_hits": 30,
+    "max_score": 0.944250061201413,
+    "took": 11740313,
+    "facets": {
+        "Categories": {
+            "field": "category",
+            "total": 30,
+            "missing": 0,
+            "other": 15,
+            "terms": [
+                {
+                    "term": "Testing and automation",
+                    "count": 6
+                },
+                {
+                    "term": "Open Document editors",
+                    "count": 3
+                },
+                {
+                    "term": "Lightning talks",
+                    "count": 2
+                },
+                {
+                    "term": "Java",
+                    "count": 2
+                },
+                {
+                    "term": "PostgreSQL",
+                    "count": 2
+                }
+            ]
+        },
+        "Day": {
+            "field": "start",
+            "total": 30,
+            "missing": 0,
+            "other": 0,
+            "date_ranges": [
+                {
+                    "name": "Saturday",
+                    "end": "2015-02-01T00:00:00Z",
+                    "count": 18
+                },
+                {
+                    "name": "Sunday",
+                    "start": "2015-02-01T00:00:00Z",
+                    "count": 12
+                }
+            ]
+        },
+        "Duration": {
+            "field": "duration",
+            "total": 30,
+            "missing": 0,
+            "other": 0,
+            "numeric_ranges": [
+                {
+                    "name": "30-60 min",
+                    "min": 31,
+                    "max": 61,
+                    "count": 18
+                },
+                {
+                    "name": "\u003c=30 min",
+                    "max": 31,
+                    "count": 12
+                }
+            ]
+        }
+    }
+}

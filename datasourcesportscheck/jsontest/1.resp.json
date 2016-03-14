@@ -1,0 +1,636 @@
+{
+    "status": {
+        "total": 1,
+        "failed": 0,
+        "successful": 1
+    },
+    "request": {
+        "query": {
+            "conjuncts": [
+                {
+                    "query": "nike",
+                    "boost": 1
+                }
+            ],
+            "boost": 1
+        },
+        "size": 10,
+        "from": 0,
+        "highlight": {
+            "style": null,
+            "fields": [
+                "description"
+            ]
+        },
+        "fields": [
+            "summary",
+            "description",
+            "speaker",
+            "location",
+            "duration",
+            "start",
+            "url"
+        ],
+        "facets": {
+            "Categories": {
+                "size": 100,
+                "field": "category"
+            },
+            "Day": {
+                "size": 2,
+                "field": "start",
+                "date_ranges": [
+                    {
+                        "name": "Saturday",
+                        "start": "0001-01-01T00:00:00Z",
+                        "end": "2015-02-01T00:00:00Z"
+                    },
+                    {
+                        "name": "Sunday",
+                        "start": "2015-02-01T00:00:00Z",
+                        "end": "0001-01-01T00:00:00Z"
+                    }
+                ]
+            },
+            "Duration": {
+                "size": 3,
+                "field": "duration",
+                "numeric_ranges": [
+                    {
+                        "name": "\u003c=30 min",
+                        "max": 31
+                    },
+                    {
+                        "name": "30-60 min",
+                        "min": 31,
+                        "max": 61
+                    },
+                    {
+                        "name": "60+ min",
+                        "min": 61
+                    }
+                ]
+            }
+        },
+        "explain": true
+    },
+    "hits": [
+        {
+            "index": "dataindex-sportscheck-product",
+            "id": "4",
+            "score": 0.16695840194341785,
+            "explanation": {
+                "value": 0.16695840194341785,
+                "message": "sum of:",
+                "children": [
+                    {
+                        "value": 0.16695840194341785,
+                        "message": "sum of:",
+                        "children": [
+                            {
+                                "value": 0.16695840194341785,
+                                "message": "product of:",
+                                "children": [
+                                    {
+                                        "value": 0.16695840194341785,
+                                        "message": "sum of:",
+                                        "children": [
+                                            {
+                                                "value": 0.16695840194341785,
+                                                "message": "product of:",
+                                                "children": [
+                                                    {
+                                                        "value": 0.16695840194341785,
+                                                        "message": "sum of:",
+                                                        "children": [
+                                                            {
+                                                                "value": 0.16695840194341785,
+                                                                "message": "fieldWeight(_all:nike in 4), product of:",
+                                                                "children": [
+                                                                    {
+                                                                        "value": 1.7320508075688772,
+                                                                        "message": "tf(termFreq(_all:nike)=3"
+                                                                    },
+                                                                    {
+                                                                        "value": 0.11396057903766632,
+                                                                        "message": "fieldNorm(field=_all, doc=4)"
+                                                                    },
+                                                                    {
+                                                                        "value": 0.8458493201727416,
+                                                                        "message": "idf(docFreq=6, maxDocs=6)"
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "value": 1,
+                                                        "message": "coord(1/1)"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "value": 1,
+                                        "message": "coord(1/1)"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            "locations": {
+                "brand": {
+                    "nike": [
+                        {
+                            "pos": 1,
+                            "start": 0,
+                            "end": 4,
+                            "array_positions": null
+                        }
+                    ]
+                },
+                "productlong": {
+                    "nike": [
+                        {
+                            "pos": 1,
+                            "start": 0,
+                            "end": 4,
+                            "array_positions": null
+                        }
+                    ]
+                },
+                "productname": {
+                    "nike": [
+                        {
+                            "pos": 1,
+                            "start": 0,
+                            "end": 4,
+                            "array_positions": null
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "index": "dataindex-sportscheck-product",
+            "id": "6",
+            "score": 0.15707027709948626,
+            "explanation": {
+                "value": 0.15707027709948626,
+                "message": "sum of:",
+                "children": [
+                    {
+                        "value": 0.15707027709948626,
+                        "message": "sum of:",
+                        "children": [
+                            {
+                                "value": 0.15707027709948626,
+                                "message": "product of:",
+                                "children": [
+                                    {
+                                        "value": 0.15707027709948626,
+                                        "message": "sum of:",
+                                        "children": [
+                                            {
+                                                "value": 0.15707027709948626,
+                                                "message": "product of:",
+                                                "children": [
+                                                    {
+                                                        "value": 0.15707027709948626,
+                                                        "message": "sum of:",
+                                                        "children": [
+                                                            {
+                                                                "value": 0.15707027709948626,
+                                                                "message": "fieldWeight(_all:nike in 6), product of:",
+                                                                "children": [
+                                                                    {
+                                                                        "value": 1.7320508075688772,
+                                                                        "message": "tf(termFreq(_all:nike)=3"
+                                                                    },
+                                                                    {
+                                                                        "value": 0.10721125453710556,
+                                                                        "message": "fieldNorm(field=_all, doc=6)"
+                                                                    },
+                                                                    {
+                                                                        "value": 0.8458493201727416,
+                                                                        "message": "idf(docFreq=6, maxDocs=6)"
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "value": 1,
+                                                        "message": "coord(1/1)"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "value": 1,
+                                        "message": "coord(1/1)"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            "locations": {
+                "brand": {
+                    "nike": [
+                        {
+                            "pos": 1,
+                            "start": 0,
+                            "end": 4,
+                            "array_positions": null
+                        }
+                    ]
+                },
+                "productlong": {
+                    "nike": [
+                        {
+                            "pos": 1,
+                            "start": 0,
+                            "end": 4,
+                            "array_positions": null
+                        }
+                    ]
+                },
+                "productname": {
+                    "nike": [
+                        {
+                            "pos": 1,
+                            "start": 0,
+                            "end": 4,
+                            "array_positions": null
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "index": "dataindex-sportscheck-product",
+            "id": "5",
+            "score": 0.15707027709948626,
+            "explanation": {
+                "value": 0.15707027709948626,
+                "message": "sum of:",
+                "children": [
+                    {
+                        "value": 0.15707027709948626,
+                        "message": "sum of:",
+                        "children": [
+                            {
+                                "value": 0.15707027709948626,
+                                "message": "product of:",
+                                "children": [
+                                    {
+                                        "value": 0.15707027709948626,
+                                        "message": "sum of:",
+                                        "children": [
+                                            {
+                                                "value": 0.15707027709948626,
+                                                "message": "product of:",
+                                                "children": [
+                                                    {
+                                                        "value": 0.15707027709948626,
+                                                        "message": "sum of:",
+                                                        "children": [
+                                                            {
+                                                                "value": 0.15707027709948626,
+                                                                "message": "fieldWeight(_all:nike in 5), product of:",
+                                                                "children": [
+                                                                    {
+                                                                        "value": 1.7320508075688772,
+                                                                        "message": "tf(termFreq(_all:nike)=3"
+                                                                    },
+                                                                    {
+                                                                        "value": 0.10721125453710556,
+                                                                        "message": "fieldNorm(field=_all, doc=5)"
+                                                                    },
+                                                                    {
+                                                                        "value": 0.8458493201727416,
+                                                                        "message": "idf(docFreq=6, maxDocs=6)"
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "value": 1,
+                                                        "message": "coord(1/1)"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "value": 1,
+                                        "message": "coord(1/1)"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            "locations": {
+                "brand": {
+                    "nike": [
+                        {
+                            "pos": 1,
+                            "start": 0,
+                            "end": 4,
+                            "array_positions": null
+                        }
+                    ]
+                },
+                "productlong": {
+                    "nike": [
+                        {
+                            "pos": 1,
+                            "start": 0,
+                            "end": 4,
+                            "array_positions": null
+                        }
+                    ]
+                },
+                "productname": {
+                    "nike": [
+                        {
+                            "pos": 1,
+                            "start": 0,
+                            "end": 4,
+                            "array_positions": null
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "index": "dataindex-sportscheck-product",
+            "id": "3",
+            "score": 0.111065462702222,
+            "explanation": {
+                "value": 0.111065462702222,
+                "message": "sum of:",
+                "children": [
+                    {
+                        "value": 0.111065462702222,
+                        "message": "sum of:",
+                        "children": [
+                            {
+                                "value": 0.111065462702222,
+                                "message": "product of:",
+                                "children": [
+                                    {
+                                        "value": 0.111065462702222,
+                                        "message": "sum of:",
+                                        "children": [
+                                            {
+                                                "value": 0.111065462702222,
+                                                "message": "product of:",
+                                                "children": [
+                                                    {
+                                                        "value": 0.111065462702222,
+                                                        "message": "sum of:",
+                                                        "children": [
+                                                            {
+                                                                "value": 0.111065462702222,
+                                                                "message": "fieldWeight(_all:nike in 3), product of:",
+                                                                "children": [
+                                                                    {
+                                                                        "value": 1,
+                                                                        "message": "tf(termFreq(_all:nike)=1"
+                                                                    },
+                                                                    {
+                                                                        "value": 0.13130643963813782,
+                                                                        "message": "fieldNorm(field=_all, doc=3)"
+                                                                    },
+                                                                    {
+                                                                        "value": 0.8458493201727416,
+                                                                        "message": "idf(docFreq=6, maxDocs=6)"
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "value": 1,
+                                                        "message": "coord(1/1)"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "value": 1,
+                                        "message": "coord(1/1)"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            "locations": {
+                "brand": {
+                    "nike": [
+                        {
+                            "pos": 1,
+                            "start": 0,
+                            "end": 4,
+                            "array_positions": null
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "index": "dataindex-sportscheck-product",
+            "id": "2",
+            "score": 0.111065462702222,
+            "explanation": {
+                "value": 0.111065462702222,
+                "message": "sum of:",
+                "children": [
+                    {
+                        "value": 0.111065462702222,
+                        "message": "sum of:",
+                        "children": [
+                            {
+                                "value": 0.111065462702222,
+                                "message": "product of:",
+                                "children": [
+                                    {
+                                        "value": 0.111065462702222,
+                                        "message": "sum of:",
+                                        "children": [
+                                            {
+                                                "value": 0.111065462702222,
+                                                "message": "product of:",
+                                                "children": [
+                                                    {
+                                                        "value": 0.111065462702222,
+                                                        "message": "sum of:",
+                                                        "children": [
+                                                            {
+                                                                "value": 0.111065462702222,
+                                                                "message": "fieldWeight(_all:nike in 2), product of:",
+                                                                "children": [
+                                                                    {
+                                                                        "value": 1,
+                                                                        "message": "tf(termFreq(_all:nike)=1"
+                                                                    },
+                                                                    {
+                                                                        "value": 0.13130643963813782,
+                                                                        "message": "fieldNorm(field=_all, doc=2)"
+                                                                    },
+                                                                    {
+                                                                        "value": 0.8458493201727416,
+                                                                        "message": "idf(docFreq=6, maxDocs=6)"
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "value": 1,
+                                                        "message": "coord(1/1)"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "value": 1,
+                                        "message": "coord(1/1)"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            "locations": {
+                "brand": {
+                    "nike": [
+                        {
+                            "pos": 1,
+                            "start": 0,
+                            "end": 4,
+                            "array_positions": null
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "index": "dataindex-sportscheck-product",
+            "id": "1",
+            "score": 0.111065462702222,
+            "explanation": {
+                "value": 0.111065462702222,
+                "message": "sum of:",
+                "children": [
+                    {
+                        "value": 0.111065462702222,
+                        "message": "sum of:",
+                        "children": [
+                            {
+                                "value": 0.111065462702222,
+                                "message": "product of:",
+                                "children": [
+                                    {
+                                        "value": 0.111065462702222,
+                                        "message": "sum of:",
+                                        "children": [
+                                            {
+                                                "value": 0.111065462702222,
+                                                "message": "product of:",
+                                                "children": [
+                                                    {
+                                                        "value": 0.111065462702222,
+                                                        "message": "sum of:",
+                                                        "children": [
+                                                            {
+                                                                "value": 0.111065462702222,
+                                                                "message": "fieldWeight(_all:nike in 1), product of:",
+                                                                "children": [
+                                                                    {
+                                                                        "value": 1,
+                                                                        "message": "tf(termFreq(_all:nike)=1"
+                                                                    },
+                                                                    {
+                                                                        "value": 0.13130643963813782,
+                                                                        "message": "fieldNorm(field=_all, doc=1)"
+                                                                    },
+                                                                    {
+                                                                        "value": 0.8458493201727416,
+                                                                        "message": "idf(docFreq=6, maxDocs=6)"
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "value": 1,
+                                                        "message": "coord(1/1)"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "value": 1,
+                                        "message": "coord(1/1)"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            "locations": {
+                "brand": {
+                    "nike": [
+                        {
+                            "pos": 1,
+                            "start": 0,
+                            "end": 4,
+                            "array_positions": null
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "total_hits": 6,
+    "max_score": 0.16695840194341785,
+    "took": 3276084,
+    "facets": {
+        "Categories": {
+            "field": "category",
+            "total": 0,
+            "missing": 6,
+            "other": 0
+        },
+        "Day": {
+            "field": "start",
+            "total": 0,
+            "missing": 6,
+            "other": 0
+        },
+        "Duration": {
+            "field": "duration",
+            "total": 0,
+            "missing": 6,
+            "other": 0
+        }
+    }
+}
